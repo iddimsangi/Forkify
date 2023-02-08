@@ -1,0 +1,24 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "Recepies Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iddimsangi/Forkify.git"
+  },
+  "author": "iddimsangi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iddimsangi/Forkify/issues"
+  },
+  "homepage": "https://github.com/iddimsangi/Forkify#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.8.3",
+    "parcel": "^2.8.3"
+  }
+}
