@@ -32,6 +32,7 @@ publisher:"My Baking Addiction"
 servings: 4
 source_url:"http://www.mybakingaddiction.com/spicy-chicken-and-pepper-jack-pizza-recipe/"
 title:"Spicy Chicken and Pepper Jack Pizza"
+{quantity: 1, unit: '', description: 'tbsp. canola or olive oil'}
  */
 
     const markup = `
@@ -86,27 +87,18 @@ title:"Spicy Chicken and Pepper Jack Pizza"
         <div class="recipe__ingredients">
           <h2 class="heading--2">Recipe ingredients</h2>
           <ul class="recipe__ingredient-list">
-            <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">1000</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">g</span>
-                pasta
-              </div>
-            </li>
-
-            <li class="recipe__ingredient">
-              <svg class="recipe__icon">
-                <use href="${icons}#icon-check"></use>
-              </svg>
-              <div class="recipe__quantity">0.5</div>
-              <div class="recipe__description">
-                <span class="recipe__unit">cup</span>
-                ricotta cheese
-              </div>
-            </li>
+           ${myReceipe.ingredients.map(ing => {
+            return ` <li class="recipe__ingredient">
+            <svg class="recipe__icon">
+              <use href="${icons}#icon-check"></use>
+            </svg>
+            <div class="recipe__quantity">${ing.quantity}</div>
+            <div class="recipe__description">
+              <span class="recipe__unit">${ing.description}</span>
+              pasta
+            </div>
+          </li>`
+           }).join('')}
           </ul>
         </div>
 
@@ -114,7 +106,7 @@ title:"Spicy Chicken and Pepper Jack Pizza"
           <h2 class="heading--2">How to cook it</h2>
           <p class="recipe__directions-text">
             This recipe was carefully designed and tested by
-            <span class="recipe__publisher">The Pioneer Woman</span>. Please check out
+            <span class="recipe__publisher">${myReceipe.publisher}</span>. Please check out
             directions at their website.
           </p>
           <a
@@ -129,6 +121,7 @@ title:"Spicy Chicken and Pepper Jack Pizza"
           </a>
         </div>
     `;
+    recipeContainer.innerHTML = '';
     recipeContainer.insertAdjacentHTML('afterbegin', markup);
 
   } catch (error) {
